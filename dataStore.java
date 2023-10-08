@@ -4,6 +4,17 @@ import java.io.*;
 
 public class dataStore 
 {
+    public int getTotalDataCount() 
+    {
+        int count = 0;
+        // Iterar a través de cada foodType en store
+        for (Map<String, FoodData> innerMap : store.values()) 
+        {
+            count += innerMap.size();  // Sumar el número de foodName dentro de este foodType
+        }
+        return count;
+    }
+
     static class generator //esta clase es un generador aleatorio de comidas (letra palabra numero numero numero numero)
     {
         private static final String chars = "abcdefghijklmnopqrstuvwxyz"; // el banco de letras elegibles, no hay mayusculas ni ñ
@@ -12,7 +23,7 @@ public class dataStore
         {
             Random rand = new Random();
             char letter = chars.charAt(rand.nextInt(chars.length())); // la letra que se usará como grupo o tipo de comida
-            String word = stringGenerator(7, chars); // invoca el metodo que genera la palabra que se usará como el nombre de la comida
+            String word = stringGenerator(2, chars); // invoca el metodo que genera la palabra que se usará como el nombre de la comida
             StringBuilder number = new StringBuilder();
 
             for (int i = 0; i < 4; i++)  // añade cuatro numeros aleatorios que seran kilocalorias, gramos de proteina, gramos de carbohidratos y gramos de grasa
@@ -56,7 +67,6 @@ public class dataStore
         String foodType;
         String foodName;
         int kcal, protein, carbs, fats;
-
         //se definen los campos para crear el objeto
 
         FoodData(String foodType, String foodName, int kcal, int protein, int carbs, int fats) 
@@ -68,7 +78,6 @@ public class dataStore
             this.carbs = carbs;
             this.fats = fats;
         }
-
         @Override
         public String toString() 
         {
@@ -94,9 +103,8 @@ public class dataStore
     public static void main(String[] args) 
     {
         {
-            int n = 10;  // Número de datos a generar
+            int n = 100;  // Número de datos a generar
             String destinyFile = "datos_aleatorios.txt";
-            
             try 
             {
                 generator.dataSaver(n, destinyFile); // llama al metodo para pasar los datos generados al archivo
@@ -114,7 +122,10 @@ public class dataStore
         try 
         {
             reader = new BufferedReader(new FileReader("datos_aleatorios.txt")); // lee los datos en el archivo
-            String input;
+            String input,sexo;
+            int edad,altura,peso,ejercicio,ideal;
+            double TMB;
+            float IMC;
     
             while ((input = reader.readLine()) != null) // mientras la linea actual no sea nula
             {
@@ -141,8 +152,10 @@ public class dataStore
                 dataStore.addData(foodType, foodName, kcal, protein, carbs, fats); // añade al hashmap los datos encontrados
             }
 
-            System.out.println("1. Ingresar Dieta"); // ofrece estas dos opciones al terminar de añadir todos los datos
-            System.out.println("2. Salir");
+            int totalDataCount = dataStore.getTotalDataCount();
+            System.out.println("Total de datos: " + totalDataCount);
+            System.out.println("1. Iniciar Programa"); // ofrece estas dos opciones al terminar de añadir todos los datos
+            System.out.println("2. Salir del Programa");
 
             while (true) 
             {
@@ -166,10 +179,128 @@ public class dataStore
                 switch (choice) 
                 {
                     case 1:
+                        System.out.println("Necesitaremos que ingrese unos cuantos datos");
+                        BufferedReader infoReader = new BufferedReader(new InputStreamReader(System.in));
+
+                        System.out.println("Ingrese su edad");
+                        edad = Integer.parseInt(infoReader.readLine());
+
+                        System.out.println("Ingrese su altura en centimetros");
+                        altura = Integer.parseInt(infoReader.readLine());
+
+                        System.out.println("Ingrese su peso aproximado en kilogramos");
+                        peso = Integer.parseInt(infoReader.readLine());
+
+                        while(true)
+                        {
+                            System.out.println("Ingrese su sexo como M para masculino y F para femenino");
+                            sexo = infoReader.readLine();
+                            System.out.println(sexo);
+                            if (sexo.equals("M"))
+                            {
+                                TMB = (10*peso) + (6.25*altura) - (5*edad) + 5;
+                                break;
+                            }
+                            if (sexo.equals("F"))
+                            {
+                                TMB = (10*peso) + (6.25*altura) - (5*edad) - 161;
+                                break;
+                            }
+                            System.out.println("Ingrese su sexo de la forma indicada");
+                        }
+
+                        while(true)
+                        {
+                            System.out.println("Ingrese su cantidad de ejercicio del 1 al 4, siendo 4 un ejercicio muy alto");
+                            ejercicio = Integer.parseInt(infoReader.readLine());
+                            if (ejercicio==1)
+                            {
+                                TMB = TMB*1.2;
+                                break;
+                            }
+                            if (ejercicio==2)
+                            {
+                                TMB = TMB*1.375;
+                                break;
+                            }
+                            if (ejercicio==3)
+                            {
+                                TMB = TMB*1.55;
+                                break;
+                            }
+                            if (ejercicio==4)
+                            {
+                                TMB = TMB*1.725;
+                                break;
+                            }
+                            System.out.println("Ingrese su cantidad de ejercicio de la forma indicada");
+                        }
+
+                        IMC = peso/(altura^2);
+
+                        if (IMC<18.5)
+                        {
+                            System.out.println("actualmente te encuentras en Bajo Peso");
+                        }
+                        if (IMC>18.5 && IMC<24.9)
+                        {
+                            System.out.println("actualmente te encuentras en el Rango Normal");
+                        }
+                        if (IMC>24.9 && IMC<29.9)
+                        {
+                            System.out.println("actualmente te encuentras en Sobrepeso");
+                        }
+                        if (IMC>30)
+                        {
+                            System.out.println("actualmente te encuentras en el Rango de Obesidad");
+                        }
+
+                        while(true)
+                        {
+                            System.out.println("Ingrese su peso ideal");
+                            ideal = Integer.parseInt(infoReader.readLine());
+                            if ((ideal/altura^2)<=18.5 || (ideal/altura^2)>=30)
+                            {
+                                break;
+                            }
+                            System.out.println("Intentar conseguir ese peso es riesgoso para tu salud, por favor escoge otro");
+                        }
+
+                        double idealKcal = 0, idealProtein = 0, idealCarbs = 0, idealFats = 0;
+
+                        if(peso>ideal) // quiere bajar
+                        {
+                            idealKcal=(TMB - TMB*0.1);
+                            idealProtein=(7.2*peso);
+                            idealFats=(4.5*peso);
+                            idealCarbs=((idealKcal-(idealProtein+idealFats))/4);
+
+                            System.out.println("La ingesta ideal debe ser de " + idealKcal + " calorias, " + idealProtein + " gramos de proteina, " + idealFats + " gramos de grasa y " + idealCarbs + " gramos de carbohidratos.");
+                        }
+                        if(peso==ideal) // quiere mantenerse
+                        {
+                            idealKcal=TMB;
+                            idealProtein=(8.4*peso);
+                            idealFats=(9*peso);
+                            idealCarbs=((idealKcal-(idealProtein+idealFats))/4);
+
+                            System.out.println("La ingesta ideal debe ser de " + idealKcal + " calorias, " + idealProtein + " gramos de proteina, " + idealFats + " gramos de grasa y " + idealCarbs + " gramos de carbohidratos.");
+                        }
+                        if(peso<ideal) // quiere subir
+                        {
+                            idealKcal=(TMB + TMB*0.1);
+                            idealProtein=(9.2*peso);
+                            idealFats=(13.5*peso);
+                            idealCarbs=((idealKcal-(idealProtein+idealFats))/4);
+
+                            System.out.println("La ingesta ideal debe ser de " + idealKcal + " calorias, " + idealProtein + " gramos de proteina, " + idealFats + " gramos de grasa y " + idealCarbs + " gramos de carbohidratos.");
+                        }
+
                         int totalKcal = 0, totalProtein = 0, totalCarbs = 0, totalFats = 0;
 
-                        System.out.println("Ingrese el tipo y nombre de comida a buscar, en el formato: foodType foodName");
+                        System.out.println("Ingrese el tipo y nombre de comida de su dieta, en el formato: foodType foodName");
                         System.out.println("Escriba '//' para finalizar y calcular calorias, proteina, carbohidratos y grasas consumidas.");
+
                         BufferedReader dietReader = new BufferedReader(new InputStreamReader(System.in));
 
                         while (true) 
@@ -209,7 +340,9 @@ public class dataStore
                             }
                         }
                         // imprime la cantidad consumida segun las comidas ingresadas
-                        System.out.println("La comida ingerida representa " + totalKcal + " calorias, " + totalProtein + " gramos de proteina, " + totalCarbs + " gramos de carbohidratos y " + totalFats + " gramos de grasa.");
+                        System.out.println("La comida ingerida actualmente representa " + totalKcal + " calorias, " + totalProtein + " gramos de proteina, " + totalFats + " gramos de grasa y " + totalCarbs + " gramos de carbohidratos.");
+                        System.out.println("Para llegar a tu objetivo tienes que consumir " + (idealKcal-totalKcal) + " calorias, " + (idealProtein-totalProtein) + " gramos de proteina, " + (idealFats-totalFats) + " gramos de grasa y " + (idealCarbs-totalCarbs) + " gramos de carbohidratos.");
+
                         break;
 
                     case 2:
@@ -226,7 +359,7 @@ public class dataStore
                         }
                         return;
                         // cierra el programa
-                    
+
                     default:
                         System.out.println("Opción no válida.");
             
