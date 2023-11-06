@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="587.0" prefWidth="872.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hellofx.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <Pane prefHeight="628.0" prefWidth="832.0">
+      <children>
+      
+          <Label fx:id="welcomeText" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="-9.0" prefHeight="64.0" prefWidth="841.0" text="¡Te damos la bienvenida a CASS!">
+            <font>
+               <Font size="43.0" />
+            </font>
+         </Label>
+         <GridPane layoutX="42.0" layoutY="90.0" prefHeight="413.0" prefWidth="762.0">
+           <columnConstraints>
+             <ColumnConstraints hgrow="SOMETIMES" maxWidth="381.0" minWidth="10.0" prefWidth="381.0" />
+             <ColumnConstraints hgrow="SOMETIMES" maxWidth="390.0" minWidth="10.0" prefWidth="381.0" />
+           </columnConstraints>
+           <rowConstraints>
+             <RowConstraints />
+             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           </rowConstraints>
+            <children>
+               <Label fx:id="welcomeText1" alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="129.0" prefWidth="381.0" text="Sexo" GridPane.rowIndex="1">
+                  <font>
+                     <Font size="27.0" />
+                  </font>
+               </Label>
+               <Label fx:id="welcomeText11" alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="126.0" prefWidth="381.0" text="Talla" GridPane.rowIndex="2">
+                  <font>
+                     <Font size="27.0" />
+                  </font>
+               </Label>
+               <Label fx:id="welcomeText12" alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="127.0" prefWidth="381.0" text="Peso" GridPane.rowIndex="3">
+                  <font>
+                     <Font size="27.0" />
+                  </font>
+               </Label>
+               <Label fx:id="welcomeText13" alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="132.0" prefWidth="381.0" text="Edad" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <font>
+                     <Font size="27.0" />
+                  </font>
+               </Label>
+               <Label fx:id="welcomeText14" alignment="TOP_CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="123.0" prefWidth="200.0" text="Actividad Física" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <font>
+                     <Font size="27.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="FieldTalla" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="200.0" promptText="cm" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+               <TextField fx:id="FieldPeso" alignment="CENTER" layoutX="101.0" layoutY="205.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="200.0" promptText="kg" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+               <TextField fx:id="FieldEdad" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="200.0" promptText="años" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+               <Slider fx:id="ActividadSlider" blockIncrement="1.0" majorTickUnit="1.0" max="4.0" maxHeight="-Infinity" maxWidth="-Infinity" min="1.0" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="0" prefHeight="20.0" prefWidth="186.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="3.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+               <Button fx:id="ButtonEnviar" mnemonicParsing="false" onAction="#clickEnviar" prefHeight="47.0" prefWidth="75.0" text="ENVIAR" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </Button>
+               <Label fx:id="welcomeText15" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="92.0" text="Sedentario" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </Label>
+               <Label fx:id="welcomeText151" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="92.0" text="Muy Activo" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+                  <GridPane.margin>
+                     <Insets left="285.0" />
+                  </GridPane.margin>
+               </Label>
+               <RadioButton fx:id="ButtonMujer" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Mujer" textAlignment="CENTER" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                     <Insets left="60.0" />
+                  </GridPane.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+                  <toggleGroup>
+                     <ToggleGroup fx:id="groupsex" />
+                  </toggleGroup>
+               </RadioButton>
+               <RadioButton fx:id="ButtonHombre" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" text="Hombre" textAlignment="CENTER" toggleGroup="$groupsex" GridPane.rowIndex="1">
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+                  <GridPane.margin>
+                     <Insets left="240.0" />
+                  </GridPane.margin>
+               </RadioButton>
+            </children>
+         </GridPane>
+         <Label fx:id="aviso1" alignment="CENTER" layoutX="41.0" layoutY="45.0" prefHeight="21.0" prefWidth="762.0" textAlignment="CENTER" textFill="RED">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
+</VBox>
