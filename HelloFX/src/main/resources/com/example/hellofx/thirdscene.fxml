@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" layoutX="128.0" layoutY="31.0" prefHeight="28.0" prefWidth="93.0" text="Tu IMC:">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="327.0" layoutY="31.0" prefHeight="28.0" prefWidth="85.0" text="Tu TMB:">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelIMC" alignment="CENTER" layoutX="221.0" layoutY="36.0" prefHeight="17.0" prefWidth="50.0" />
+      <Label fx:id="labelTMB" alignment="CENTER" layoutX="419.0" layoutY="37.0" prefHeight="17.0" prefWidth="50.0" />
+      <Label layoutX="172.0" layoutY="114.0" prefHeight="21.0" prefWidth="149.0" text="Ingresa tu peso ideal:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="fieldPesoIdeal" alignment="CENTER" layoutX="327.0" layoutY="112.0" prefHeight="25.0" prefWidth="101.0" promptText="kg" />
+      <Label alignment="CENTER" layoutX="14.0" layoutY="145.0" prefHeight="21.0" prefWidth="586.0" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="226.0" layoutY="190.0" prefHeight="21.0" prefWidth="149.0" text="Necesitas consumir:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="128.0" layoutY="295.0" prefHeight="21.0" prefWidth="63.0" text="de grasa">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelcarbohidrato" alignment="CENTER" layoutX="388.0" layoutY="264.0" prefHeight="21.0" prefWidth="93.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="378.0" layoutY="295.0" prefHeight="21.0" prefWidth="113.0" text="de carbohidratos">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="247.0" layoutY="295.0" prefHeight="21.0" prefWidth="85.0" text="de proteina">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelgrasa" alignment="CENTER" layoutX="128.0" layoutY="264.0" prefHeight="21.0" prefWidth="63.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelproteina" alignment="CENTER" layoutX="258.0" layoutY="264.0" prefHeight="21.0" prefWidth="63.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

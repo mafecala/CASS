@@ -59,24 +59,23 @@ public class HelloController
             aviso1.setText("Asegúrate de completar todos los campos e ingresar los datos en la medida numérica indicada");
         }
 
-        /*
+
 
         //aca se inicia la segunda escena con un boton para enviar el peso ideal y un espacio para escribirlo
-
+/*
         ideal = Integer.parseInt(infoReader.readLine());
         if ((ideal/((0.01*altura)*(0.01*altura)))<=18.5 || (ideal/((0.01*altura)*(0.01*altura)))>=30)
         {
            System.out.println("Intentar conseguir ese peso es riesgoso para tu salud, por favor escoge otro");
         }
-
-
+*/
         // aca sigue entonces lo del calculo de las calorias y eso
 
-         */
+
 
         if (edad!=null && peso!=null && altura!=null && sexo!=null)
         {
-            Parent root = FXMLLoader.load(getClass().getResource("secondscene.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("thirdscene.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
