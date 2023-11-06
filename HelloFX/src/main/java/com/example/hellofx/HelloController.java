@@ -11,23 +11,19 @@ import javafx.stage.Stage;
 public class HelloController
 {
     @FXML
-    private Button ButtonEnviar;
+    private Button ButtonEnviar,ButtonEnviarPesoIdeal,ButtonCalcular;
     @FXML
     private RadioButton ButtonMujer,ButtonHombre;
     @FXML
-    private TextField FieldTalla, FieldPeso, FieldEdad;
+    private TextField FieldTalla, FieldPeso, FieldEdad, FieldPesoIdeal;
     @FXML
     private Slider ActividadSlider;
     @FXML
-    private Label aviso1;
+    public Label aviso1, labelIMC, labelTMB, labelaviso, labelcarbohidrato, labelgrasa, labelproteina;
 
-    static Integer edad;
-    static Integer altura;
-    static Double peso;
-    static Integer ejercicio;
+    static Integer edad, altura, ejercicio, ideal;
+    static Double peso, TMB, IMC, idealKcal, idealProtein, idealCarbs, idealFats;
     static String sexo;
-    static double TMB;
-    static double IMC;
 
     public void clickEnviar(ActionEvent event) throws IOException
     {
@@ -36,42 +32,24 @@ public class HelloController
             edad = Integer.parseInt(FieldEdad.getText());
             peso = Double.parseDouble(FieldPeso.getText());
             altura = Integer.parseInt(FieldTalla.getText());
-            if(ButtonMujer.isSelected())
+            if (ButtonMujer.isSelected())
             {
                 sexo = String.valueOf('F');
-                TMB = (10*peso) + (6.25*altura) - (5*edad) - 161;
+                TMB = (10 * peso) + (6.25 * altura) - (5 * edad) - 161;
             }
-            else if(ButtonHombre.isSelected())
+            else if (ButtonHombre.isSelected())
             {
                 sexo = String.valueOf('M');
-                TMB = (10*peso) + (6.25*altura) - (5*edad) + 5;
+                TMB = (10 * peso) + (6.25 * altura) - (5 * edad) + 5;
             }
             ejercicio = (int) ActividadSlider.getValue();
-            TMB = (1.025 + (0.175*ejercicio))*TMB;
-            IMC = peso/((0.01*altura)*(0.01*altura));
-
-            System.out.println(IMC);
-            System.out.println(TMB);
-
+            TMB = (1.025 + (0.175 * ejercicio)) * TMB;
+            IMC = peso / ((0.01 * altura) * (0.01 * altura));
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             aviso1.setText("Asegúrate de completar todos los campos e ingresar los datos en la medida numérica indicada");
         }
-
-
-
-        //aca se inicia la segunda escena con un boton para enviar el peso ideal y un espacio para escribirlo
-/*
-        ideal = Integer.parseInt(infoReader.readLine());
-        if ((ideal/((0.01*altura)*(0.01*altura)))<=18.5 || (ideal/((0.01*altura)*(0.01*altura)))>=30)
-        {
-           System.out.println("Intentar conseguir ese peso es riesgoso para tu salud, por favor escoge otro");
-        }
-*/
-        // aca sigue entonces lo del calculo de las calorias y eso
-
-
 
         if (edad!=null && peso!=null && altura!=null && sexo!=null)
         {
@@ -82,11 +60,65 @@ public class HelloController
             stage.show();
         }
     }
+    public void clickCalcular(ActionEvent event)
+    {
+        labelIMC.setText(Long.toString(Math.round(IMC)));
+        labelTMB.setText(Long.toString(Math.round(TMB)));
+    }
+
+    public void clickEnviarPeso(ActionEvent event)
+    {
+        ideal = Integer.parseInt(FieldPesoIdeal.getText());
+
+        if ((ideal/((0.01*altura)*(0.01*altura)))<=18.5 || (ideal/((0.01*altura)*(0.01*altura)))>=30)
+        {
+            labelaviso.setText("Intentar conseguir ese peso es riesgoso para tu salud, por favor escoge otro");
+            ideal=null;
+        }
+
+        if(ideal!=null)
+        {
+            if(peso>ideal) // quiere bajar
+            {
+                idealKcal=(TMB - TMB*0.1);
+                idealProtein=(7.2*peso);
+                idealFats=(4.5*peso);
+                idealCarbs=((idealKcal-(idealProtein+idealFats))/4);
+
+                labelaviso.setText("");
+                labelcarbohidrato.setText(idealCarbs.toString());
+                labelgrasa.setText(idealFats.toString());
+                labelproteina.setText(idealProtein.toString());
+            }
+            if(Math.round(peso)==ideal) // quiere mantenerse
+            {
+                idealKcal=TMB;
+                idealProtein=(8.4*peso);
+                idealFats=(9*peso);
+                idealCarbs=((idealKcal-(idealProtein+idealFats))/4);
+
+                labelaviso.setText("");
+                labelcarbohidrato.setText(idealCarbs.toString());
+                labelgrasa.setText(idealFats.toString());
+                labelproteina.setText(idealProtein.toString());
+            }
+            if(peso<ideal) // quiere subir
+            {
+                idealKcal=(TMB + TMB*0.1);
+                idealProtein=(9.2*peso);
+                idealFats=(13.5*peso);
+                idealCarbs=((idealKcal-(idealProtein+idealFats))/4);
+
+                labelaviso.setText("");
+                labelcarbohidrato.setText(idealCarbs.toString());
+                labelgrasa.setText(idealFats.toString());
+                labelproteina.setText(idealProtein.toString());
+            }
+        }
+    }
+
     private Stage stage;
     private Scene scene;
     private Parent root;
-
-
-
 
 }
