@@ -8,50 +8,45 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hellofx.HelloController">
    <children>
-      <Label alignment="CENTER" layoutX="56.0" layoutY="32.0" prefHeight="28.0" prefWidth="93.0" text="Tu IMC:">
+      <Label fx:id="labelTMB2" alignment="CENTER" layoutX="255.0" layoutY="32.0" prefHeight="28.0" prefWidth="85.0" text="Tu TMB:">
          <font>
-            <Font name="System Bold" size="19.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="255.0" layoutY="32.0" prefHeight="28.0" prefWidth="85.0" text="Tu TMB:">
-         <font>
-            <Font name="System Bold" size="19.0" />
+            <Font size="19.0" />
          </font>
       </Label>
       <Label fx:id="labelIMC" alignment="CENTER" layoutX="149.0" layoutY="37.0" prefHeight="17.0" prefWidth="50.0" />
       <Label fx:id="labelTMB" alignment="CENTER" layoutX="347.0" layoutY="38.0" prefHeight="17.0" prefWidth="50.0" />
-      <Label layoutX="71.0" layoutY="113.0" prefHeight="21.0" prefWidth="149.0" text="Ingresa tu peso ideal:">
+      <Label fx:id="label1" layoutX="62.0" layoutY="113.0" prefHeight="21.0" prefWidth="196.0" text="Ingresa tu peso ideal:">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="FieldPesoIdeal" alignment="CENTER" layoutX="226.0" layoutY="111.0" prefHeight="25.0" prefWidth="101.0" promptText="kg" />
+      <TextField fx:id="FieldPesoIdeal" alignment="CENTER" layoutX="290.0" layoutY="111.0" prefHeight="25.0" prefWidth="101.0" promptText="kg" />
       <Label fx:id="labelaviso" alignment="CENTER" layoutX="14.0" layoutY="145.0" prefHeight="21.0" prefWidth="586.0" textAlignment="CENTER" textFill="RED">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="226.0" layoutY="190.0" prefHeight="21.0" prefWidth="149.0" text="Necesitas consumir:">
+      <Label fx:id="label2" layoutX="226.0" layoutY="190.0" prefHeight="21.0" prefWidth="149.0" text="Necesitas consumir:">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="128.0" layoutY="295.0" prefHeight="21.0" prefWidth="63.0" text="de grasa">
+      <Label fx:id="degrasa" alignment="CENTER" layoutX="128.0" layoutY="295.0" prefHeight="21.0" prefWidth="63.0" text="de grasa">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
       <Label fx:id="labelcarbohidrato" alignment="CENTER" layoutX="388.0" layoutY="264.0" prefHeight="21.0" prefWidth="93.0">
          <font>
-            <Font size="15.0" />
+            <Font size="13.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="378.0" layoutY="295.0" prefHeight="21.0" prefWidth="113.0" text="de carbohidratos">
+      <Label fx:id="decarbohidrato" alignment="CENTER" layoutX="378.0" layoutY="295.0" prefHeight="21.0" prefWidth="113.0" text="de carbohidratos">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="247.0" layoutY="295.0" prefHeight="21.0" prefWidth="85.0" text="de proteina">
+      <Label fx:id="deproteina" alignment="CENTER" layoutX="247.0" layoutY="295.0" prefHeight="21.0" prefWidth="85.0" text="de proteina">
          <font>
             <Font size="13.0" />
          </font>
@@ -66,7 +61,12 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Button fx:id="ButtonEnviarPesoIdeal" layoutX="409.0" layoutY="111.0" mnemonicParsing="false" onAction="#clickEnviarPeso" text="Enviar" />
+      <Button fx:id="ButtonEnviarPesoIdeal" layoutX="457.0" layoutY="111.0" mnemonicParsing="false" onAction="#clickEnviarPeso" text="Enviar" />
       <Button fx:id="ButtonCalcular" layoutX="457.0" layoutY="33.0" mnemonicParsing="false" onAction="#clickCalcular" text="Calcular" />
+      <Label fx:id="labelIMC2" alignment="CENTER" layoutX="61.0" layoutY="33.0" prefHeight="28.0" prefWidth="85.0" text="Tu IMC:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

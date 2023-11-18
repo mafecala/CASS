@@ -8,6 +8,8 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import javafx.scene.control.Label.*;
+
 public class HelloController
 {
     @FXML
@@ -56,6 +58,7 @@ public class HelloController
             Parent root = FXMLLoader.load(getClass().getResource("thirdscene.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
         }

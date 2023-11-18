@@ -1,0 +1,137 @@
+@font-face
+{
+    -fx-font-family: "Quicksand Light";
+    src: url("../fonts/Quicksand-Light.ttf");
+}
+
+
+@font-face
+{
+    -fx-font-family: "Quicksand Regular";
+    src: url("../fonts/Quicksand-Regular.ttf");
+}
+
+@font-face
+{
+    -fx-font-family: "Quicksand Medium";
+    src: url("../fonts/Quicksand-Medium.ttf");
+}
+
+@font-face
+{
+    -fx-font-family: "Quicksand Semi-bold";
+    src: url("../fonts/Quicksand-SemiBold.ttf");
+}
+
+@font-face
+{
+    -fx-font-family: "Quicksand Bold";
+    src: url("../fonts/Quicksand-Bold.ttf");
+}
+
+
+.root{
+    -fx-background-color: #F0BCC0;
+
+}
+
+
+#welcomeText{
+    -fx-font-family: "Quicksand Bold";
+    -fx-fill: #BB7778;
+    -fx-stroke: #FBE8DE;
+    -fx-stroke-width: 3;
+
+}
+
+#welcomeText1, #welcomeText11, #welcomeText12, #welcomeText13, #welcomeText14, #welcomeText15, #welcomeText151{
+    -fx-font-family: "Quicksand Medium";
+    -fx-text-fill: #6C4C54;
+}
+
+#ButtonMujer, #ButtonHombre, #FieldTalla, #FieldPeso {
+    -fx-font-family: "Quicksand Medium";
+    -fx-text-fill: #6C4C54;
+
+}
+
+#aviso1{
+      -fx-font-family: "Quicksand Medium";
+      -fx-text-fill: red;
+}
+
+#FieldTalla, #FieldPeso, #FieldEdad{
+    -fx-background-color: #FBE8DE;
+    -fx-border-color: #BB7778;
+}
+
+#ButtonEnviar{
+    -fx-background-color: #FBE8DE;
+    -fx-text-fill: #BB7778;
+    -fx-border-color: #BB7778;
+}
+
+#ButtonEnviar:hover{
+    -fx-background-color: #BB7778;
+    -fx-text-fill: #FBE8DE;
+    -fx-border-color: #FBE8DE;
+    -fx-pref-width: 70;
+    -fx-pref-height: 40;
+    -fx-font-size: 15;
+    -fx-font-family: "Quicksand Medium";
+}
+
+
+#labelIMC2, #labelTMB2{
+    -fx-font-family: "Quicksand Bold";
+    -fx-text-fill: #6C4C54;
+}
+
+
+#labelIMC, #labelTMB, #label1, #label2, #deproteina, #decarbohidrato, #degrasa{
+    -fx-font-family: "Quicksand Medium";
+    -fx-text-fill: #6C4C54;
+}
+
+#labelaviso{
+    -fx-font-family: "Quicksand Medium";
+    -fx-text-fill: red;
+}
+
+#ButtonEnviarPesoIdeal{
+    -fx-background-color: #FBE8DE;
+    -fx-text-fill: #BB7778;
+    -fx-border-color: #BB7778;
+}
+
+#ButtonEnviarPesoIdeal:hover{
+    -fx-background-color: #BB7778;
+    -fx-text-fill: #FBE8DE;
+    -fx-border-color: #FBE8DE;
+    -fx-pref-width: 46;
+    -fx-pref-height: 23;
+    -fx-font-size: 9;
+    -fx-font-family: "Quicksand Medium";
+}
+
+#ButtonCalcular{
+    -fx-background-color: #FBE8DE;
+    -fx-text-fill: #BB7778;
+    -fx-border-color: #BB7778;
+}
+
+#ButtonCalcular:hover{
+    -fx-background-color: #BB7778;
+    -fx-text-fill: #FBE8DE;
+    -fx-border-color: #FBE8DE;
+    -fx-pref-width: 56;
+    -fx-pref-height: 23;
+    -fx-font-size: 9;
+    -fx-font-family: "Quicksand Medium";
+}
+
+#FieldPesoIdeal{
+    -fx-background-color: #FBE8DE;
+    -fx-border-color: #BB7778;
+}
+
