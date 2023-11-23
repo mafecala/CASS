@@ -135,3 +135,7 @@
     -fx-border-color: #BB7778;
 }
 
+#labelgrasa, #labelproteina, #labelcarbohidrato{
+    -fx-font-family: "Quicksand Bold";
+    -fx-text-fill: #6C4C54;
+}

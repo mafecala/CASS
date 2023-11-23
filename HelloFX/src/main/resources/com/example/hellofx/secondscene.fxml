@@ -6,24 +6,52 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hellofx.HelloController">
    <children>
-      <Button layoutX="215.0" layoutY="314.0" mnemonicParsing="false" text="Agregar" />
-      <Button layoutX="326.0" layoutY="314.0" mnemonicParsing="false" text="Finalizar" />
-      <TextField layoutX="134.0" layoutY="175.0" prefHeight="25.0" prefWidth="140.0" />
-      <TextField layoutX="326.0" layoutY="175.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="62.0" prefHeight="50.0" prefWidth="347.0" text="Ingresa tus alimentos">
+      <Button fx:id="ButtonAgregar" layoutX="463.0" layoutY="160.0" mnemonicParsing="false" text="Agregar" />
+      <Button fx:id="ButtonFinalizar" layoutX="462.0" layoutY="268.0" mnemonicParsing="false" text="Finalizar" />
+      <TextField fx:id="FieldTipo" layoutX="238.0" layoutY="125.0" prefHeight="25.0" prefWidth="140.0" />
+      <Label fx:id="titleFoods" alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="22.0" prefHeight="50.0" prefWidth="441.0" text="Ingresa nuevas comidas para almacenarlas">
          <font>
-            <Font size="34.0" />
+            <Font size="22.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="150.0" prefHeight="25.0" prefWidth="149.0" text="Tipo de comida">
+      <Label fx:id="grasaFoods" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="96.0" layoutY="307.0" prefHeight="25.0" prefWidth="127.0" text="Grasas">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="326.0" layoutY="150.0" prefHeight="25.0" prefWidth="149.0" text="Nombre de comida">
+      <Label fx:id="tipoFoods" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="96.0" layoutY="125.0" prefHeight="25.0" prefWidth="127.0" text="Tipo de comida">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="FieldKcal" alignment="CENTER" layoutX="238.0" layoutY="196.0" prefHeight="25.0" prefWidth="140.0" promptText="kcal" />
+      <TextField fx:id="FieldNombre" layoutX="238.0" layoutY="160.0" prefHeight="25.0" prefWidth="140.0" />
+      <TextField fx:id="FieldProteina" alignment="CENTER" layoutX="238.0" layoutY="232.0" prefHeight="25.0" prefWidth="140.0" promptText="gramos" />
+      <Label fx:id="nombreFoods" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="96.0" layoutY="160.0" prefHeight="25.0" prefWidth="127.0" text="Nombre de comida">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="kcalFoods" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="96.0" layoutY="196.0" prefHeight="25.0" prefWidth="127.0" text="Calorías">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="proteinaFoods" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="96.0" layoutY="232.0" prefHeight="25.0" prefWidth="127.0" text="Proteínas">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="carbohidratoFoods" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="96.0" layoutY="268.0" prefHeight="25.0" prefWidth="127.0" text="Carbohidratos">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="FieldCarbohidrato" alignment="CENTER" layoutX="238.0" layoutY="268.0" prefHeight="25.0" prefWidth="140.0" promptText="gramos" />
+      <TextField fx:id="FieldGrasa" alignment="CENTER" layoutX="238.0" layoutY="307.0" prefHeight="25.0" prefWidth="140.0" promptText="gramos" />
+      <Label fx:id="avisoFoods" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="38.0" layoutY="60.0" prefHeight="25.0" prefWidth="524.0" textFill="RED">
          <font>
             <Font size="14.0" />
          </font>
