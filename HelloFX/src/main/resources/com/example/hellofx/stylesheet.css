@@ -36,12 +36,18 @@
 }
 
 
-#welcomeText{
+#welcomeText, #titleFoods{
     -fx-font-family: "Quicksand Bold";
     -fx-fill: #BB7778;
     -fx-stroke: #FBE8DE;
     -fx-stroke-width: 3;
+}
 
+#titleDay{
+    -fx-font-family: "Quicksand Bold";
+    -fx-fill: #BB7778;
+    -fx-stroke: #FBE8DE;
+    -fx-stroke-width: 3;
 }
 
 #welcomeText1, #welcomeText11, #welcomeText12, #welcomeText13, #welcomeText14, #welcomeText15, #welcomeText151{
@@ -65,7 +71,7 @@
     -fx-border-color: #BB7778;
 }
 
-#ButtonEnviar, #ButtonSiguiente{
+#ButtonEnviar, #ButtonSiguiente, #ButtonSiguienteDay, #ButtonEnviarDay{
     -fx-background-color: #FBE8DE;
     -fx-text-fill: #BB7778;
     -fx-border-color: #BB7778;
@@ -88,7 +94,7 @@
 }
 
 
-#labelIMC, #labelTMB, #label1, #label2, #deproteina, #decarbohidrato, #degrasa{
+#labelIMC, #labelTMB, #label1, #label2, #deproteina, #decarbohidrato, #degrasa, #labelTipoDay, #labelNombreDay{
     -fx-font-family: "Quicksand Medium";
     -fx-text-fill: #6C4C54;
 }
@@ -130,7 +136,7 @@
     -fx-font-family: "Quicksand Medium";
 }
 
-#ButtonSiguiente:hover{
+#ButtonSiguiente:hover, #ButtonSiguienteDay:hover{
     -fx-background-color: #BB7778;
     -fx-text-fill: #FBE8DE;
     -fx-border-color: #FBE8DE;
@@ -150,11 +156,6 @@
     -fx-text-fill: #6C4C54;
 }
 
-#titleFoods{
-    -fx-font-family: "Quicksand Bold";
-    -fx-text-fill: #6C4C54;
-}
-
 #avisoFoods, #avisoAgregar{
     -fx-font-family: "Quicksand Regular";
 }
@@ -164,7 +165,17 @@
     -fx-text-fill: #6C4C54;
 }
 
-#FieldTipo, #FieldNombre, #FieldKcal, #FieldProteina, #FieldCarbohidrato, #FieldGrasa{
+#FieldTipo, #FieldNombre, #FieldKcal, #FieldProteina, #FieldCarbohidrato, #FieldGrasa, #FieldTipoDay, #FieldNombreDay{
     -fx-background-color: #FBE8DE;
     -fx-border-color: #BB7778;
+}
+
+#ButtonEnviarDay:hover{
+        -fx-background-color: #BB7778;
+        -fx-text-fill: #FBE8DE;
+        -fx-border-color: #FBE8DE;
+        -fx-pref-width: 54;
+        -fx-pref-height: 23;
+        -fx-font-size: 11;
+        -fx-font-family: "Quicksand Medium";
 }

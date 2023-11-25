@@ -5,17 +5,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hellofx.HelloController">
    <children>
       <Button fx:id="ButtonAgregar" layoutX="463.0" layoutY="160.0" mnemonicParsing="false" onAction="#clickAgregar" text="Agregar" />
       <Button fx:id="ButtonFinalizar" layoutX="462.0" layoutY="268.0" mnemonicParsing="false" onAction="#clickFinalizar" text="Finalizar" />
       <TextField fx:id="FieldTipo" alignment="CENTER" layoutX="238.0" layoutY="125.0" prefHeight="25.0" prefWidth="140.0" />
-      <Label fx:id="titleFoods" alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="22.0" prefHeight="50.0" prefWidth="590.0" text="Ingresa nuevas comidas para almacenarlas">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
       <Label fx:id="grasaFoods" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="96.0" layoutY="307.0" prefHeight="25.0" prefWidth="127.0" text="Grasas">
          <font>
             <Font size="14.0" />
@@ -57,5 +53,10 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <Text layoutX="102.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresa nuevas comidas para almacenarlas" textAlignment="CENTER">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
