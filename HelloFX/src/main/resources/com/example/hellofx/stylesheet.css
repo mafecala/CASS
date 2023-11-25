@@ -94,7 +94,7 @@
 }
 
 
-#labelIMC, #labelTMB, #label1, #label2, #deproteina, #decarbohidrato, #degrasa, #labelTipoDay, #labelNombreDay, #labelProgreso{
+#labelIMC, #labelTMB, #label1, #label2, #deproteina, #decarbohidrato, #degrasa, #decalorias, #labelTipoDay, #labelNombreDay, #labelProgreso{
     -fx-font-family: "Quicksand Medium";
     -fx-text-fill: #6C4C54;
 }
@@ -161,7 +161,7 @@
     -fx-border-color: #BB7778;
 }
 
-#labelgrasa, #labelproteina, #labelcarbohidrato{
+#labelgrasa, #labelproteina, #labelcarbohidrato, #labelcalorias{
     -fx-font-family: "Quicksand Bold";
     -fx-text-fill: #6C4C54;
 }

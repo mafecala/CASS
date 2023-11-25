@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import javafx.scene.control.Label.*;
@@ -15,20 +16,19 @@ import static com.example.hellofx.dataStore.addData;
 public class HelloController
 {
     @FXML
-    private Button ButtonEnviar,ButtonEnviarPesoIdeal,ButtonCalcular;
+    public Text avisoVerdeDay, avisoRojoDay;
     @FXML
     private RadioButton ButtonMujer,ButtonHombre;
     @FXML
-    private TextField FieldTalla, FieldPeso, FieldEdad, FieldPesoIdeal, FieldTipo, FieldNombre, FieldKcal, FieldProteina, FieldCarbohidrato, FieldGrasa;
+    private TextField FieldTalla, FieldPeso, FieldEdad, FieldPesoIdeal, FieldTipo, FieldNombre, FieldKcal, FieldProteina, FieldCarbohidrato, FieldGrasa, FieldTipoDay, FieldNombreDay;
     @FXML
     private Slider ActividadSlider;
     @FXML
-    public Label avisoAgregar, avisoFoods, aviso1, labelIMC, labelTMB, labelaviso, labelcarbohidrato, labelgrasa, labelproteina;
-
+    public Label numKcal, numCarb, numGrasa, numProt, avisoAgregar, avisoFoods, aviso1, labelIMC, labelTMB, labelaviso, labelcarbohidrato, labelgrasa, labelproteina, labelcalorias;
     static Integer edad, altura, ejercicio, ideal;
+    static int totalKcal, totalProtein, totalCarbs, totalFats;
     static Double peso, TMB, IMC, idealKcal, idealProtein, idealCarbs, idealFats;
     static String sexo;
-
     public void clickEnviar(ActionEvent event) throws IOException
     {
         try
@@ -70,7 +70,6 @@ public class HelloController
         labelIMC.setText(Long.toString(Math.round(IMC)));
         labelTMB.setText(Long.toString(Math.round(TMB)));
     }
-
     public void clickEnviarPeso(ActionEvent event)
     {
         try
@@ -83,6 +82,7 @@ public class HelloController
             labelaviso.setText("Por favor, ingresa un peso valido");
             FieldPesoIdeal.clear();
             ideal=null;
+            labelcalorias.setText("");
             labelcarbohidrato.setText("");
             labelgrasa.setText("");
             labelproteina.setText("");
@@ -93,6 +93,7 @@ public class HelloController
             labelaviso.setText("Intentar conseguir ese peso es riesgoso para tu salud, por favor escoge otro");
             FieldPesoIdeal.clear();
             ideal=null;
+            labelcalorias.setText("");
             labelcarbohidrato.setText("");
             labelgrasa.setText("");
             labelproteina.setText("");
@@ -103,10 +104,11 @@ public class HelloController
             if(peso>ideal) // quiere bajar
             {
                 idealKcal=(TMB - TMB*0.1);
-                idealProtein=(7.2*peso);
-                idealFats=(4.5*peso);
-                idealCarbs=((idealKcal-(idealProtein+idealFats))/4);
+                idealProtein=(1.5*peso);
+                idealFats=(0.5*peso);
+                idealCarbs=((idealKcal-((idealProtein*4)+(idealFats*9)))/4);
 
+                labelcalorias.setText(String.valueOf(Math.round(idealKcal)));
                 labelcarbohidrato.setText(String.valueOf(Math.round(idealCarbs)));
                 labelgrasa.setText(String.valueOf(Math.round(idealFats)));
                 labelproteina.setText(String.valueOf(Math.round(idealProtein)));
@@ -114,10 +116,11 @@ public class HelloController
             if(Math.round(peso)==ideal) // quiere mantenerse
             {
                 idealKcal=TMB;
-                idealProtein=(8.4*peso);
-                idealFats=(9*peso);
-                idealCarbs=((idealKcal-(idealProtein+idealFats))/4);
+                idealProtein=(2*peso);
+                idealFats=(peso);
+                idealCarbs=((idealKcal-((idealProtein*4)+(idealFats*9)))/4);
 
+                labelcalorias.setText(String.valueOf(Math.round(idealKcal)));
                 labelcarbohidrato.setText(String.valueOf(Math.round(idealCarbs)));
                 labelgrasa.setText(String.valueOf(Math.round(idealFats)));
                 labelproteina.setText(String.valueOf(Math.round(idealProtein)));
@@ -125,17 +128,17 @@ public class HelloController
             if(peso<ideal) // quiere subir
             {
                 idealKcal=(TMB + TMB*0.1);
-                idealProtein=(9.2*peso);
-                idealFats=(13.5*peso);
-                idealCarbs=((idealKcal-(idealProtein+idealFats))/4);
+                idealProtein=(2.5*peso);
+                idealFats=(1.5*peso);
+                idealCarbs=((idealKcal-((idealProtein*4)+(idealFats*9)))/4);
 
+                labelcalorias.setText(String.valueOf(Math.round(idealKcal)));
                 labelcarbohidrato.setText(String.valueOf(Math.round(idealCarbs)));
                 labelgrasa.setText(String.valueOf(Math.round(idealFats)));
                 labelproteina.setText(String.valueOf(Math.round(idealProtein)));
             }
         }
     }
-
     public void clickHaciaTerceraEscena(ActionEvent event)
     {
         if(ideal!=null)
@@ -156,7 +159,6 @@ public class HelloController
         }
         labelaviso.setText("Por favor, Ingresa tu peso ideal");
     }
-
     public void clickAgregar(ActionEvent event)
     {
         try
@@ -171,16 +173,12 @@ public class HelloController
             FieldProteina.clear();
             FieldCarbohidrato.clear();
             FieldGrasa.clear();
-
-            //esto es para debug
-            System.out.println(dataStore.getTotalDataCount());
         }
         catch (Exception e)
         {
             avisoFoods.setText("Recuerda llenar todos los campos de la manera indicada");
         }
     }
-
     public void clickFinalizar(ActionEvent event)
     {
         try
@@ -191,9 +189,6 @@ public class HelloController
             scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
-
-
-
         }
         catch (IOException e)
         {
@@ -202,13 +197,61 @@ public class HelloController
     }
     public void clickButtonEnviarDay(ActionEvent event)
     {
+        try
+        {
+            dataStore.FoodData result = dataStore.getDataByTypeAndName(FieldTipoDay.getText(), FieldNombreDay.getText());
+            if (result != null)
+            {
+                totalKcal += result.kcal;
+                totalProtein += result.protein;
+                totalCarbs += result.carbs;
+                totalFats += result.fats;
+                avisoRojoDay.setText("");
+                avisoVerdeDay.setText("Comida de nombre '" + FieldNombreDay.getText() +  "' y de tipo '" + FieldTipoDay.getText() + "' añadida a la dieta diaria");
+                FieldTipoDay.clear();
+                FieldNombreDay.clear();
+            }
+            else
+            {
+                avisoVerdeDay.setText("");
+                avisoRojoDay.setText("Comida de nombre '" + FieldNombreDay.getText() +  "' y de tipo '" + FieldTipoDay.getText() + "' no encontrada");
+                FieldTipoDay.clear();
+                FieldNombreDay.clear();
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            avisoRojoDay.setText("Por favor, llena ambos campos correctamente");
+            FieldTipoDay.clear();
+            FieldNombreDay.clear();
+        }
     }
-
     public void clickButtonSiguienteDay(ActionEvent event)
     {
+        try
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("fifthscene.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+    public void clickCalcularTotales(ActionEvent event)
+    {
+        numKcal.setText(String.valueOf(Math.round(idealKcal-totalKcal)));
+        numProt.setText(String.valueOf(Math.round(idealProtein-totalProtein)));
+        numGrasa.setText(String.valueOf(Math.round(idealFats-totalFats)));
+        numCarb.setText(String.valueOf(Math.round(idealCarbs-totalCarbs)));
     }
     private Stage stage;
     private Scene scene;
     private Parent root;
-
 }
+
