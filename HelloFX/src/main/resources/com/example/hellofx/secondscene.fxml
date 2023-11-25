@@ -11,7 +11,7 @@
       <Button fx:id="ButtonAgregar" layoutX="463.0" layoutY="160.0" mnemonicParsing="false" onAction="#clickAgregar" text="Agregar" />
       <Button fx:id="ButtonFinalizar" layoutX="462.0" layoutY="268.0" mnemonicParsing="false" onAction="#clickFinalizar" text="Finalizar" />
       <TextField fx:id="FieldTipo" layoutX="238.0" layoutY="125.0" prefHeight="25.0" prefWidth="140.0" />
-      <Label fx:id="titleFoods" alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="22.0" prefHeight="50.0" prefWidth="441.0" text="Ingresa nuevas comidas para almacenarlas">
+      <Label fx:id="titleFoods" alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="22.0" prefHeight="50.0" prefWidth="590.0" text="Ingresa nuevas comidas para almacenarlas">
          <font>
             <Font size="22.0" />
          </font>
@@ -29,7 +29,7 @@
       <TextField fx:id="FieldKcal" alignment="CENTER" layoutX="238.0" layoutY="196.0" prefHeight="25.0" prefWidth="140.0" promptText="kcal" />
       <TextField fx:id="FieldNombre" layoutX="238.0" layoutY="160.0" prefHeight="25.0" prefWidth="140.0" />
       <TextField fx:id="FieldProteina" alignment="CENTER" layoutX="238.0" layoutY="232.0" prefHeight="25.0" prefWidth="140.0" promptText="gramos" />
-      <Label fx:id="nombreFoods" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="96.0" layoutY="160.0" prefHeight="25.0" prefWidth="127.0" text="Nombre de comida">
+      <Label fx:id="nombreFoods" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="75.0" layoutY="160.0" prefHeight="25.0" prefWidth="148.0" text="Nombre de comida">
          <font>
             <Font size="14.0" />
          </font>
@@ -52,7 +52,7 @@
       <TextField fx:id="FieldCarbohidrato" alignment="CENTER" layoutX="238.0" layoutY="268.0" prefHeight="25.0" prefWidth="140.0" promptText="gramos" />
       <TextField fx:id="FieldGrasa" alignment="CENTER" layoutX="238.0" layoutY="307.0" prefHeight="25.0" prefWidth="140.0" promptText="gramos" />
       <Label fx:id="avisoFoods" alignment="CENTER" contentDisplay="RIGHT" layoutX="38.0" layoutY="75.0" prefHeight="25.0" prefWidth="524.0" textFill="RED" />
-      <Label fx:id="avisoAgregar" alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="330.0" prefHeight="25.0" prefWidth="524.0" textFill="green" >
+      <Label fx:id="avisoAgregar" alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="347.0" prefHeight="25.0" prefWidth="524.0" textFill="green">
          <font>
             <Font size="14.0" />
          </font>

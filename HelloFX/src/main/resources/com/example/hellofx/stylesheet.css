@@ -65,7 +65,7 @@
     -fx-border-color: #BB7778;
 }
 
-#ButtonEnviar{
+#ButtonEnviar, #ButtonSiguiente{
     -fx-background-color: #FBE8DE;
     -fx-text-fill: #BB7778;
     -fx-border-color: #BB7778;
@@ -114,19 +114,29 @@
     -fx-font-family: "Quicksand Medium";
 }
 
-#ButtonCalcular{
+#ButtonCalcular, #ButtonAgregar, #ButtonFinalizar{
     -fx-background-color: #FBE8DE;
     -fx-text-fill: #BB7778;
     -fx-border-color: #BB7778;
 }
 
-#ButtonCalcular:hover{
+#ButtonCalcular:hover, #ButtonAgregar:hover, #ButtonFinalizar:hover{
     -fx-background-color: #BB7778;
     -fx-text-fill: #FBE8DE;
     -fx-border-color: #FBE8DE;
     -fx-pref-width: 56;
     -fx-pref-height: 23;
     -fx-font-size: 9;
+    -fx-font-family: "Quicksand Medium";
+}
+
+#ButtonSiguiente:hover{
+    -fx-background-color: #BB7778;
+    -fx-text-fill: #FBE8DE;
+    -fx-border-color: #FBE8DE;
+    -fx-pref-width: 80;
+    -fx-pref-height: 28;
+    -fx-font-size: 11;
     -fx-font-family: "Quicksand Medium";
 }
 
@@ -138,4 +148,23 @@
 #labelgrasa, #labelproteina, #labelcarbohidrato{
     -fx-font-family: "Quicksand Bold";
     -fx-text-fill: #6C4C54;
+}
+
+#titleFoods{
+    -fx-font-family: "Quicksand Bold";
+    -fx-text-fill: #6C4C54;
+}
+
+#avisoFoods, #avisoAgregar{
+    -fx-font-family: "Quicksand Regular";
+}
+
+#tipoFoods,#nombreFoods,#kcalFoods,#proteinaFoods, #carbohidratoFoods, #grasaFoods{
+    -fx-font-family: "Quicksand Medium";
+    -fx-text-fill: #6C4C54;
+}
+
+#FieldTipo, #FieldNombre, #FieldKcal, #FieldProteina, #FieldCarbohidrato, #FieldGrasa{
+    -fx-background-color: #FBE8DE;
+    -fx-border-color: #BB7778;
 }

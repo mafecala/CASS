@@ -68,6 +68,6 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <Button fx:id="ButtonSiguiente" layoutX="248.0" layoutY="300.0" mnemonicParsing="false" onAction="#clickHaciaTerceraEscena" prefHeight="25.0" prefWidth="85.0" text="Siguiente" />
+      <Button fx:id="ButtonSiguiente" alignment="CENTER" contentDisplay="CENTER" layoutX="248.0" layoutY="300.0" mnemonicParsing="false" onAction="#clickHaciaTerceraEscena" prefHeight="25.0" prefWidth="85.0" text="Siguiente" textAlignment="CENTER" />
    </children>
 </AnchorPane>
