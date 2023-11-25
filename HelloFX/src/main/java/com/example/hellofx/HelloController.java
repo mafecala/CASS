@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 
 import javafx.scene.control.Label.*;
 
+import static com.example.hellofx.dataStore.addData;
+
 public class HelloController
 {
     @FXML
@@ -17,11 +19,11 @@ public class HelloController
     @FXML
     private RadioButton ButtonMujer,ButtonHombre;
     @FXML
-    private TextField FieldTalla, FieldPeso, FieldEdad, FieldPesoIdeal;
+    private TextField FieldTalla, FieldPeso, FieldEdad, FieldPesoIdeal, FieldTipo, FieldNombre, FieldKcal, FieldProteina, FieldCarbohidrato, FieldGrasa;
     @FXML
     private Slider ActividadSlider;
     @FXML
-    public Label aviso1, labelIMC, labelTMB, labelaviso, labelcarbohidrato, labelgrasa, labelproteina;
+    public Label avisoAgregar, avisoFoods, aviso1, labelIMC, labelTMB, labelaviso, labelcarbohidrato, labelgrasa, labelproteina;
 
     static Integer edad, altura, ejercicio, ideal;
     static Double peso, TMB, IMC, idealKcal, idealProtein, idealCarbs, idealFats;
@@ -71,12 +73,29 @@ public class HelloController
 
     public void clickEnviarPeso(ActionEvent event)
     {
-        ideal = Integer.parseInt(FieldPesoIdeal.getText());
+        try
+        {
+            ideal = Integer.parseInt(FieldPesoIdeal.getText());
+            labelaviso.setText("");
+        }
+        catch(Exception e)
+        {
+            labelaviso.setText("Por favor, ingresa un peso valido");
+            FieldPesoIdeal.clear();
+            ideal=null;
+            labelcarbohidrato.setText("");
+            labelgrasa.setText("");
+            labelproteina.setText("");
+        }
 
         if ((ideal/((0.01*altura)*(0.01*altura)))<=18.5 || (ideal/((0.01*altura)*(0.01*altura)))>=30)
         {
             labelaviso.setText("Intentar conseguir ese peso es riesgoso para tu salud, por favor escoge otro");
+            FieldPesoIdeal.clear();
             ideal=null;
+            labelcarbohidrato.setText("");
+            labelgrasa.setText("");
+            labelproteina.setText("");
         }
 
         if(ideal!=null)
@@ -88,10 +107,9 @@ public class HelloController
                 idealFats=(4.5*peso);
                 idealCarbs=((idealKcal-(idealProtein+idealFats))/4);
 
-                labelaviso.setText("");
-                labelcarbohidrato.setText(idealCarbs.toString());
-                labelgrasa.setText(idealFats.toString());
-                labelproteina.setText(idealProtein.toString());
+                labelcarbohidrato.setText(String.valueOf(Math.round(idealCarbs)));
+                labelgrasa.setText(String.valueOf(Math.round(idealFats)));
+                labelproteina.setText(String.valueOf(Math.round(idealProtein)));
             }
             if(Math.round(peso)==ideal) // quiere mantenerse
             {
@@ -100,10 +118,9 @@ public class HelloController
                 idealFats=(9*peso);
                 idealCarbs=((idealKcal-(idealProtein+idealFats))/4);
 
-                labelaviso.setText("");
-                labelcarbohidrato.setText(idealCarbs.toString());
-                labelgrasa.setText(idealFats.toString());
-                labelproteina.setText(idealProtein.toString());
+                labelcarbohidrato.setText(String.valueOf(Math.round(idealCarbs)));
+                labelgrasa.setText(String.valueOf(Math.round(idealFats)));
+                labelproteina.setText(String.valueOf(Math.round(idealProtein)));
             }
             if(peso<ideal) // quiere subir
             {
@@ -112,12 +129,62 @@ public class HelloController
                 idealFats=(13.5*peso);
                 idealCarbs=((idealKcal-(idealProtein+idealFats))/4);
 
-                labelaviso.setText("");
-                labelcarbohidrato.setText(idealCarbs.toString());
-                labelgrasa.setText(idealFats.toString());
-                labelproteina.setText(idealProtein.toString());
+                labelcarbohidrato.setText(String.valueOf(Math.round(idealCarbs)));
+                labelgrasa.setText(String.valueOf(Math.round(idealFats)));
+                labelproteina.setText(String.valueOf(Math.round(idealProtein)));
             }
         }
+    }
+
+    public void clickHaciaTerceraEscena(ActionEvent event)
+    {
+        if(ideal!=null)
+        {
+            try
+            {
+                Parent root = FXMLLoader.load(getClass().getResource("secondscene.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
+                stage.setScene(scene);
+                stage.show();
+            }
+            catch (IOException e)
+            {
+                throw new RuntimeException(e);
+            }
+        }
+        labelaviso.setText("Por favor, Ingresa tu peso ideal");
+    }
+
+    public void clickAgregar(ActionEvent event)
+    {
+        try
+        {
+            addData(FieldTipo.getText(),FieldNombre.getText(),Integer.parseInt(FieldKcal.getText()),Integer.parseInt(FieldProteina.getText()),Integer.parseInt(FieldCarbohidrato.getText()),Integer.parseInt(FieldGrasa.getText()));
+            avisoFoods.setText("");
+
+            avisoAgregar.setText("Comida de nombre '" + FieldNombre.getText() + "' y de tipo '" + FieldTipo.getText() + "' agregada con exito");
+            FieldTipo.clear();
+            FieldNombre.clear();
+            FieldKcal.clear();
+            FieldProteina.clear();
+            FieldCarbohidrato.clear();
+            FieldGrasa.clear();
+
+            //esto es para debug
+            System.out.println(dataStore.getTotalDataCount());
+        }
+        catch (Exception e)
+        {
+            avisoFoods.setText("Recuerda llenar todos los campos de la manera indicada");
+        }
+    }
+
+    public void clickFinalizar(ActionEvent event)
+    {
+        //esto es para debug
+        System.out.println("no mi bro, aun no hace nada");
     }
 
     private Stage stage;

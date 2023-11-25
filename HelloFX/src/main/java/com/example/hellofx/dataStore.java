@@ -1,5 +1,4 @@
 package com.example.hellofx;
-
 import java.util.*;
 import java.io.*;
 
@@ -15,11 +14,9 @@ public class dataStore extends HelloController
         }
         return count;
     }
-
     static class generator //esta clase es un generador aleatorio de comidas (letra palabra numero numero numero numero)
     {
         private static final String chars = "abcdefghijklmnopqrstuvwxyz"; // el banco de letras elegibles, no hay mayusculas ni ñ
-
         public static String dataGenerator()
         {
             Random rand = new Random();
@@ -37,7 +34,6 @@ public class dataStore extends HelloController
             }
             return letter + " " + word + " " + number.toString(); // los separa con espacios para poder ser legibles en el siguiente paso
         }
-
         public static String stringGenerator(int len, String chars) // este metodo crea una palabra usando el banco de letras
         {
             Random rand = new Random();
@@ -49,7 +45,6 @@ public class dataStore extends HelloController
             }
             return sb.toString();
         }
-
         public static void dataSaver(int n, String archivoDestino) throws IOException // crea la cantidad indicada de palabras y las añade a un archivo para ser leido posteriormente
         {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoDestino)))
@@ -62,7 +57,6 @@ public class dataStore extends HelloController
             }
         }
     }
-
     static class FoodData
     {
         String foodType;
@@ -85,20 +79,50 @@ public class dataStore extends HelloController
             return "FoodData [foodType= " + foodType + ", foodName= " + foodName + ", kcal= " + kcal + ", protein= " + protein + ", carbs= " + carbs + ", fats= " + fats + "]";
         }
     }
-
     private static Map<String, Map<String, FoodData>> store = new HashMap<>(); //crea los dos hashmaps (uno externo y uno interno)
-
     public static void addData(String foodType, String foodName, int kcal, int protein, int carbs, int fats)
     {
         FoodData newNode = new FoodData(foodType, foodName, kcal, protein, carbs, fats); // crea el nodo con los datos ingresados
         store.putIfAbsent(foodType, new HashMap<>()); // si es un tipo de comida nuevo, añade un nuevo hashmap para ese tipo
         store.get(foodType).put(foodName, newNode); // añade la comida y sus datos en el hashmap de su tipo
     }
-
     public FoodData getDataByTypeAndName(String foodType, String foodName) //obtiene los datos numericos de la comida indicada por tipo y nombre
     {
-        Map<String, FoodData> foodData = store.get(foodType); // establece el mapa foodData con respecto al mapa de foodType especificado
-        return foodData != null ? foodData.get(foodName) : null; // mientras foodData no sea nulo, devuelve los valores asociados a foodName
+        Map<String, FoodData> tempMap = store.get(foodType); // establece el mapa foodData con respecto al mapa de foodType especificado
+        return tempMap != null ? tempMap.get(foodName) : null; // mientras foodData no sea nulo, devuelve los valores asociados a foodName
+    }
+
+    //esos dos metodos tambien son para debug y para limpiar el HelloApplication
+    public static void printer()
+    {
+        System.out.println(store);
+    }
+    public static void initializer(int n)
+    {
+        String destinyFile = "datos_aleatorios.txt";
+        try
+        {
+            dataStore.generator.dataSaver(n, destinyFile);
+            System.out.println("Datos almacenados en " + destinyFile);
+            BufferedReader reader = new BufferedReader(new FileReader("datos_aleatorios.txt"));
+
+            String input;
+
+            while ((input = reader.readLine()) != null)
+            {
+                if (input.equals("//"))
+                {
+                    break;
+                }
+                String[] parts = input.split(" ");
+                dataStore.addData(parts[0], parts[1], Integer.parseInt(parts[2]), Integer.parseInt(parts[3]), Integer.parseInt(parts[4]), Integer.parseInt(parts[5]));
+            }
+            System.out.println("Total de datos: " + dataStore.getTotalDataCount());
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 /*
     public static void main(String[] args)
@@ -112,65 +136,6 @@ public class dataStore extends HelloController
 
             while (true)
             {
-                while(true)
-                {
-                if (IMC<18.5)
-                {
-                    System.out.println("actualmente te encuentras en Bajo Peso");
-                }
-                if (IMC>18.5 && IMC<24.9)
-                {
-                    System.out.println("actualmente te encuentras en el Rango Normal");
-                }
-                if (IMC>24.9 && IMC<29.9)
-                {
-                    System.out.println("actualmente te encuentras en Sobrepeso");
-                }
-                if (IMC>30)
-                {
-                    System.out.println("actualmente te encuentras en el Rango de Obesidad");
-                }
-
-                while(true)
-                {
-                    System.out.println("Ingrese su peso ideal");
-                    ideal = Integer.parseInt(infoReader.readLine());
-                    if ((ideal/altura^2)<=18.5 || (ideal/altura^2)>=30)
-                    {
-                        break;
-                    }
-                    System.out.println("Intentar conseguir ese peso es riesgoso para tu salud, por favor escoge otro");
-                }
-
-                double idealKcal = 0, idealProtein = 0, idealCarbs = 0, idealFats = 0;
-
-                if(peso>ideal) // quiere bajar
-                {
-                    idealKcal=(TMB - TMB*0.1);
-                    idealProtein=(7.2*peso);
-                    idealFats=(4.5*peso);
-                    idealCarbs=((idealKcal-(idealProtein+idealFats))/4);
-
-                    System.out.println("La ingesta ideal debe ser de " + idealKcal + " calorias, " + idealProtein + " gramos de proteina, " + idealFats + " gramos de grasa y " + idealCarbs + " gramos de carbohidratos.");
-                }
-                if(peso==ideal) // quiere mantenerse
-                {
-                    idealKcal=TMB;
-                    idealProtein=(8.4*peso);
-                    idealFats=(9*peso);
-                    idealCarbs=((idealKcal-(idealProtein+idealFats))/4);
-
-                    System.out.println("La ingesta ideal debe ser de " + idealKcal + " calorias, " + idealProtein + " gramos de proteina, " + idealFats + " gramos de grasa y " + idealCarbs + " gramos de carbohidratos.");
-                }
-                if(peso<ideal) // quiere subir
-                {
-                    idealKcal=(TMB + TMB*0.1);
-                    idealProtein=(9.2*peso);
-                    idealFats=(13.5*peso);
-                    idealCarbs=((idealKcal-(idealProtein+idealFats))/4);
-
-                    System.out.println("La ingesta ideal debe ser de " + idealKcal + " calorias, " + idealProtein + " gramos de proteina, " + idealFats + " gramos de grasa y " + idealCarbs + " gramos de carbohidratos.");
-                }
 
                 int totalKcal = 0, totalProtein = 0, totalCarbs = 0, totalFats = 0;
 

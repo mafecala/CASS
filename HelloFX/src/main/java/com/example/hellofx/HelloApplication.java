@@ -28,31 +28,12 @@ public class HelloApplication extends Application
 
     public static void main(String[] args)
     {
-        int n = 100;
-        String destinyFile = "datos_aleatorios.txt";
-        try
-        {
-            dataStore.generator.dataSaver(n, destinyFile);
-            System.out.println("Datos almacenados en " + destinyFile);
-            BufferedReader reader = new BufferedReader(new FileReader("datos_aleatorios.txt"));
+        //esta cosa es solo para que se vea mas bonito
+        dataStore.initializer(5);
 
-            String input;
-
-            while ((input = reader.readLine()) != null)
-            {
-                if (input.equals("//"))
-                {
-                    break;
-                }
-                String[] parts = input.split(" ");
-                dataStore.addData(parts[0], parts[1], Integer.parseInt(parts[2]), Integer.parseInt(parts[3]), Integer.parseInt(parts[4]), Integer.parseInt(parts[5]));
-            }
-            System.out.println("Total de datos: " + dataStore.getTotalDataCount());
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
         launch();
+
+        //el metodo printer es para debug porque me daba pereza cambiar las cosas de privado a publico
+        dataStore.printer();
     }
 }
