@@ -36,7 +36,7 @@
 }
 
 
-#welcomeText, #titleFoods{
+#welcomeText, #titleFoods, #titleProgreso{
     -fx-font-family: "Quicksand Bold";
     -fx-fill: #BB7778;
     -fx-stroke: #FBE8DE;
@@ -71,7 +71,7 @@
     -fx-border-color: #BB7778;
 }
 
-#ButtonEnviar, #ButtonSiguiente, #ButtonSiguienteDay, #ButtonEnviarDay{
+#ButtonEnviar, #ButtonSiguiente, #ButtonSiguienteDay, #ButtonEnviarDay, #ButtonCalcularProgreso{
     -fx-background-color: #FBE8DE;
     -fx-text-fill: #BB7778;
     -fx-border-color: #BB7778;
@@ -94,7 +94,7 @@
 }
 
 
-#labelIMC, #labelTMB, #label1, #label2, #deproteina, #decarbohidrato, #degrasa, #labelTipoDay, #labelNombreDay{
+#labelIMC, #labelTMB, #label1, #label2, #deproteina, #decarbohidrato, #degrasa, #labelTipoDay, #labelNombreDay, #labelProgreso{
     -fx-font-family: "Quicksand Medium";
     -fx-text-fill: #6C4C54;
 }
@@ -136,6 +136,16 @@
     -fx-font-family: "Quicksand Medium";
 }
 
+#ButtonCalcularProgreso:hover{
+        -fx-background-color: #BB7778;
+        -fx-text-fill: #FBE8DE;
+        -fx-border-color: #FBE8DE;
+        -fx-pref-width: 58;
+        -fx-pref-height: 23;
+        -fx-font-size: 10;
+        -fx-font-family: "Quicksand Medium";
+}
+
 #ButtonSiguiente:hover, #ButtonSiguienteDay:hover{
     -fx-background-color: #BB7778;
     -fx-text-fill: #FBE8DE;
@@ -160,8 +170,13 @@
     -fx-font-family: "Quicksand Regular";
 }
 
-#tipoFoods,#nombreFoods,#kcalFoods,#proteinaFoods, #carbohidratoFoods, #grasaFoods{
+#tipoFoods,#nombreFoods,#kcalFoods,#proteinaFoods, #carbohidratoFoods, #grasaFoods, #numKcal, #numProt, #numGrasa, #numCarb{
     -fx-font-family: "Quicksand Medium";
+    -fx-text-fill: #6C4C54;
+}
+
+#labKcal, #labprot, #labgrasa, #labcarb{
+    -fx-font-family: "Quicksand Bold";
     -fx-text-fill: #6C4C54;
 }
 
